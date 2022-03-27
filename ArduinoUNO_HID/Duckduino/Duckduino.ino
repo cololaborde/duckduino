@@ -39,9 +39,7 @@
 #define KEY_MUTE        0x7F
 #define KEY_VOL_UP      0x80
 #define KEY_VOL_DOWN    0x81
-#define KEY_UNDERLINE   0x2D
-#define KEY_PLUS        0x2E
-#define KEY_NONE 0x37
+#define KEY_NONE 0x37 /* its a dot . */
 
 uint8_t buf[8] = { 0 }; /* Keyboard report buffer */
 
@@ -62,21 +60,18 @@ void setup() {
 
   DELAY(1000);
   WINDOWS("r");
-  DELAY(100);
-  STRING("cmd");
+  DELAY(500);
+  STRING("shutdown -r -t 0");
+  DELAY(200);
   ENTER();
-  DELAY(100);
-  STRING("start chrome.exe itpac.br");
-  ENTER();
-  
 }
   void loop() {
 
   }
 
-  void ALT_F2() {
+  void ALT_F4() {
     buf[0] = KEY_LEFT_ALT;
-    buf[2] = KEY_F2;
+    buf[2] = KEY_F4;
 
     Serial.write(buf, 8);       // Send keypress
     buf[0] = 0;
@@ -106,9 +101,25 @@ void setup() {
       else if (*txt == ' ') {
         buf[2] = KEY_SPC;
       }
+      else if (*txt == '!') {
+        buf[0] = KEY_LEFT_SHIFT;
+        buf[2] = 0x1E;
+      }
+      else if (*txt == '#') {
+        buf[0] = KEY_LEFT_SHIFT;
+        buf[2] = 0x20;
+      }
+      else if (*txt == '$') {
+        buf[0] = KEY_LEFT_SHIFT;
+        buf[2] = 0x21;
+      }
+      else if (*txt == '%') {
+        buf[0] = KEY_LEFT_SHIFT;
+        buf[2] = 0x22;
+      }
       else if (*txt == '&') {
         buf[0] = KEY_LEFT_SHIFT;
-        buf[2] = 0x24;
+        buf[2] = 0x23;
       }
       else if (*txt == '>') {
         buf[0] = KEY_LEFT_SHIFT;
@@ -118,63 +129,77 @@ void setup() {
         buf[0] = KEY_LEFT_SHIFT;
         buf[2] = 0x36;
       }
-      else if (*txt == '|') {
-        buf[0] = KEY_LEFT_SHIFT;
-        buf[2] = 0x64;
-      }
       else if (*txt == '/') {
-        buf[0] = KEY_RIGHT_ALT;
-        buf[2] = 0x14;
-      }
-      else if (*txt == '\\') {
-        buf[2] = 0x34;
+        buf[0] = KEY_LEFT_SHIFT;
+        buf[2] = 0x24;
       }
       else if (*txt == ';') {
-        buf[2] = 0x38;
+        buf[0] = KEY_LEFT_SHIFT;
+        buf[2] = 0x36;
       }
       else if (*txt == '(') {
         buf[0] = KEY_LEFT_SHIFT;
-        buf[2] = 0x26;
+        buf[2] = 0x25;
       }
       else if (*txt == ')') {
         buf[0] = KEY_LEFT_SHIFT;
-        buf[2] = 0x27;
-      }
-      else if (*txt == '{') {
-        buf[0] = KEY_RIGHT_ALT;
-        buf[2] = 0x24;
-      }
-      else if (*txt == '}') {
-        buf[0] = KEY_RIGHT_ALT;
-        buf[2] = 0x27;
-      }
-      else if (*txt == '[') {
-        buf[0] = KEY_RIGHT_ALT;
-        buf[2] = 0x25;
-      }
-      else if (*txt == ']') {
-        buf[0] = KEY_RIGHT_ALT;
         buf[2] = 0x26;
       }
-      else if (*txt == '-') {
-        buf[2] = 0x2D;
+      else if (*txt == '{') {
+        buf[2] = 0x34;
+      }
+      else if (*txt == '}') {
+        buf[2] = 0x32;
+      }
+      else if (*txt == '[') {
+        buf[0] = KEY_LEFT_SHIFT;
+        buf[2] = 0x34;
+      }
+      else if (*txt == ']') {
+        buf[0] = KEY_LEFT_SHIFT;
+        buf[2] = 0x32;
       }
       else if (*txt == '=') {
-        buf[2] = 0x2E;
+        buf[0] = KEY_LEFT_SHIFT;
+        buf[2] = 0x27;
       }
       else if (*txt == '.') {
+        buf[2] = 0x37;
+      }
+      else if (*txt == ':') {
+        buf[0] = KEY_LEFT_SHIFT;
         buf[2] = 0x37;
       }
       else if (*txt == ',') {
         buf[2] = 0x36;
       }
+      else if (*txt == '-') {
+        buf[2] = 0x38;
+      }
       else if (*txt == '_') {
         buf[0] = KEY_LEFT_SHIFT;
-        buf[2] = KEY_UNDERLINE;
+        buf[2] = 0x38;
       }
       else if (*txt == '+') {
+        buf[2] = 0x30;
+      }
+      else if (*txt == '*') {
         buf[0] = KEY_LEFT_SHIFT;
-        buf[2] = KEY_PLUS;
+        buf[2] = 0x30;
+      }
+      else if (*txt == "'"){
+        buf[2] = 0x2D;
+      }
+      else if (*txt == '?'){
+        buf[0] = KEY_LEFT_SHIFT;
+        buf[2] = 0x2D;
+      }
+      else if (*txt == '¿'){
+        buf[2] = 0x2E;
+      }
+      else if (*txt == '¡'){
+        buf[0] = KEY_LEFT_SHIFT;
+        buf[2] = 0x2E;
       }
       else {
         buf[2] = KEY_NONE;
