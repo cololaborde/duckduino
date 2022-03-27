@@ -11,17 +11,14 @@ When guided script indicates, upload /ArduinoUNO_HID/Duckduino/Duckduino.ino fil
 
 Requirements: dfu-programmer
 
- Debian
-apt-get install dfu-programmer
- Ubuntu
-apt-get install dfu-programmer
+ Debian / Raspbian / Ubuntu /  Kali Linux
+ apt-get install dfu-programmer
+ 
  Arch Linux
-pacman -S dfu-programmer
- Kali Linux
-apt-get install dfu-programmer
+ pacman -S dfu-programmer
+ 
  Fedora
-dnf install dfu-programmer
+ dnf install dfu-programmer
+ 
  OS X
-brew install dfu-programmer
- Raspbian
-apt-get install dfu-programmer
+ brew install dfu-programmer
