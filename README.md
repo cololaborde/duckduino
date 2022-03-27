@@ -15,13 +15,17 @@ In addition, the script refers to "two pins", these are marked below. You should
 Requirements: dfu-programmer
 
  Debian / Raspbian / Ubuntu /  Kali Linux
+ 
  apt-get install dfu-programmer
  
  Arch Linux
+ 
  pacman -S dfu-programmer
  
  Fedora
+ 
  dnf install dfu-programmer
  
  OS X
+ 
  brew install dfu-programmer
