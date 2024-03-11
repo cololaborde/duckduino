@@ -51,3 +51,17 @@ sudo dfu-programmer atmega16u2 flash Arduino-usbserial-uno.hex
 
 sudo dfu-programmer atmega16u2 reset
 ```
+
+
+### Disclaimer
+
+When loading your script, the arduino IDE may show the following error:
+```bash
+avrdude: ser_open(): can't open device "/dev/ttyACM0": Permission denied
+```
+
+To solve it, you just have to give read and write permissions to that device
+
+```bash
+sudo chmod a+rw /dev/ttyACM0
+```
