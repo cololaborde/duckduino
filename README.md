@@ -33,6 +33,7 @@ In addition, the script refers to "two pins", these are marked below. You should
  
  ### Fedora
  ```bash
+ sudo dnf copr enable erovia/dfu-programmer
  dnf install dfu-programmer
  ```
  ### OS X
